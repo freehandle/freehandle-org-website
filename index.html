@@ -1,0 +1,813 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>FreeHandle</title>
+  <meta name="description" content="FreeHandle.">
+  <meta name="author" content="FreeHandle Authors.">
+
+  <meta property="og:title" content="FreeHandle">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Crypto network for human-to-human interaction.">
+  
+  <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+  <div style="display: flex; flex-direction: column; align-items: center; width: 100%; overflow-x: hidden;">
+  <!-- Hidden Wordle Game -->
+  <div class = "hidden" id="gamediv">
+    <div  id="game-board-modal" style="padding: 2vh; display: flex; flex-direction: column; align-items: center; height: 100%;">
+      <div style="width: 100%; display: flex; justify-content: end; margin-bottom: min(calc(0.2 * (90vh - 36vmin)),calc(0.2 * (90vh - 335px)));">
+        <p class="close-button" onclick="hideGame()">CLOSE &#66338</p>
+      </div>
+      <div id="game-board-choice">
+      </div>
+      <h1 id ="errwordle"></h1>
+      <h1 id ="lenwordle"></h1>
+      <h1 id ="rightwordle"></h1>
+      <h1 id ="wrongwordle"></h1>
+      <div id="keyboard-show" style="margin-top:auto; display: flex; justify-content: center; align-items: end; margin-bottom: 2vh;">        
+        <div id="keyboard-cont">
+          <div class="first-row">
+            <p class="keyboard-button">q</p>
+            <p class="keyboard-button">w</p>
+            <p class="keyboard-button">e</p>
+            <p class="keyboard-button">r</p>
+            <p class="keyboard-button">t</p>
+            <p class="keyboard-button">y</p>
+            <p class="keyboard-button">u</p>
+            <p class="keyboard-button">i</p>
+            <p class="keyboard-button">o</p>
+            <p class="keyboard-button">p</p>
+          </div>
+          <div class="second-row">
+            <p class="keyboard-button">a</p>
+            <p class="keyboard-button">s</p>
+            <p class="keyboard-button">d</p>
+            <p class="keyboard-button">f</p>
+            <p class="keyboard-button">g</p>
+            <p class="keyboard-button">h</p>
+            <p class="keyboard-button">j</p>
+            <p class="keyboard-button">k</p>
+            <p class="keyboard-button">l</p>
+          </div>
+          <div class="third-row">
+            <p class="keyboard-button">Del</p>
+            <p class="keyboard-button">z</p>
+            <p class="keyboard-button">x</p>
+            <p class="keyboard-button">c</p>
+            <p class="keyboard-button">v</p>
+            <p class="keyboard-button">b</p>
+            <p class="keyboard-button">n</p>
+            <p class="keyboard-button">m</p>
+            <p class="keyboard-button">Enter</p>
+          </div>
+        </div>
+      </div>
+    </div>     
+  </div>
+  <!-- Header with animated background image -->
+  <div id="animatedbackheader" style="width: 100%; background: url('./static/BG-gradient02.gif'); background-repeat: no-repeat; background-size: 100% 100%;">
+    <div style="display: flex; justify-content: center;">
+      <a class="links" href="#unplugged_scroll"> 
+        Unplugged 
+      </a>
+      <a class="links" href="#whaaat"> 
+        Whaaaat...? 
+      </a>
+      <a class="links" href="#nerds_frame"> 
+        Nerds :) 
+      </a>
+      <a class="links" href="#adventure"> 
+        Adventure \o/
+      </a>
+    </div>
+    <div id="title" style="width: 100%;">
+      <p class="title">
+        make internet 
+      </p>
+       <!-- Wordle Start -->
+       <div style="display:flex; justify-content: center;">
+        <div style="width: min(10vw, 120px);"></div>
+        <div  id="game-board">
+        </div>        
+        <h3 style="width: min(10vw, 120px);" onclick="initBoard();" role="button"> <span id ="startgame" class="solve">SOLVE</span> </h3>
+      </div>
+      <!-- Wrodle End -->
+      <p class="title" style="padding-bottom: min(3vw,30px);"> 
+        again! 
+      </p>    
+    </div>
+    <div style="display: flex; justify-content: center;">
+      <div class="letsdo"> 
+        <a style="text-align: center; padding: 0px; margin: 0px;" href="synergy/signin"> 
+          LET'S DO THIS!
+        </a>
+      </div>
+    </div> 
+    <div style="width: 100%; background-image: linear-gradient(0deg, rgba(227,227,227,1), rgba(227,227,227,0)); display: flex; flex-direction: column; align-items: center;">
+      <div style="position: relative; width: min(100vw,1200px); height:min(50vw,600px);">
+        <div style="position: absolute; left: 14.3%; top:20.7%; width:90%; height:69.5%;">
+          <svg width="100%" height="100%" viewBox="0 0 1224 537" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1175.81 537L1224 0H605.374L0 502.999L637.299 432.895L1175.81 537Z" fill="black"/>
+          </svg>
+        </div>
+        <div style="position: absolute; left: 52%; top:19%">
+          <p class="sticker" style="background-color:#FC7CEC; transform: rotate(-27.6deg);">
+            We are
+          </p>
+        </div>
+        <div style="position: absolute; left: min(58vw,700px); top: min(12vw,150px);">
+          <p class="text-medium" style="color: #E3E3E3; width: min(40vw,360px);"> 
+            &nbsp &nbsp &nbsp crypto enthusiasts that, in the spirit of Satoshi Nakamoto, 
+            believe in <span style="font-weight: bold">digital interactions</span> without third party mediation
+          </p>
+        </div>
+        <div style="position: absolute; left: 0.2%; top:0px">
+          <div style="width: min(60vw,600px);">
+            <img src="./static/AEREUM-02.png" width="100%"/>
+          </div>
+        </div>
+      </div>
+      <div style="position: relative; width: min(100vw,1200px); height:min(47vw,600px);">
+        <div style="position: absolute; left: 2.4%; top:20.2%; width:70%;">
+          <svg width="100%" height="100%" viewBox="0 0 971 518" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M38.2283 518L0 0H490.756L971 485.202L465.43 417.578L38.2283 518Z" fill="black"/>
+          </svg>
+        </div>
+        <div style="position: absolute; left: 1%; top:15%">
+          <p class="sticker" style="background-color:#16935B; transform: rotate(18.7deg);">
+            We propose
+          </p>
+        </div>
+        <div style="position: absolute; left: 48%; top:-5%; width:100%;">
+          <div style="height: min(47vw,600px);">
+            <img src="./static/AEREUM-01.png" height="100%"/>
+          </div>
+        </div>
+        <div style="position: absolute; left: min(10vw,110px); top:min(12vw,200px)">
+          <p class="text-medium" style="color: #E3E3E3; width: 38%; width: min(37vw,360px);"> 
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp a digital agreement so that people can <span style="font-weight: bold">interact freely</span>, 
+            no single provider in charge of distribution and format 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width: 100%; height: min(40vw, 480px); background-color: #E3E3E3; position: relative;">
+    <div style="position: absolute; top:0; left:0; width: 100%; height: 100%;">
+      <div style="height: calc(50% - 10vw); width: 100%;">
+      </div>
+      <div style="height: 20vw; width: 100%; background-color: #FC7CEC; clip-path: polygon(0% 0%,0% 100%,100% 100%,0% 0%);">
+      </div>
+      <div style="height: calc(50% - 10vw); width: 100%; background-color: #FC7CEC;">
+      </div>
+    </div>
+    <div style="position: absolute; top:0; left: 0; width: 100%; height: 100%; background-color: transparent; margin-top: 30px;">
+      <div style="width: 100%; height: 100%; display: flex; justify-content: center;">
+        <div style="position: relative; width: min(100vw, 1200px); height: 100%;">
+          <div style="position: absolute; left: 12%; top:0%; width: 84%;">
+            <svg width="100%" viewBox="0 0 1212 558" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1164.28 558L1212 0H599.439L0 522.67L631.051 449.824L1164.28 558Z" fill="black"/>
+            </svg>
+          </div>
+          <div style="position: absolute; left: 50%; top:0%">
+            <p class="sticker" style="background-color:#E5DC1D; transform: rotate(+14.16deg);">
+              We have
+            </p>
+          </div>
+          <div style="position: absolute; left: 0%; top:0%; width:100%;">
+            <div style="height: min(50vw, 500px);">
+              <img src="./static/AEREUM-03.png" height="100%"></img>
+            </div>
+          </div>
+          <div style="position: absolute; left: min(55vw,700px); top: min(4vw,50px)">
+            <p class="text-medium" style="color: #E3E3E3; width: min(38vw,360px);"> 
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a functioning network based on the agreement, 
+              the first decentralized digital <span style="font-weight: bold"> 
+              community venue for people </span> 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:100%; background-color: #FC7CEC; display: flex; justify-content: center; margin-top: 0px;">
+    <div style="width: min(100vw, 1200px);  display: flex; flex-direction: column; align-items: center; margin-top: 90px;">
+      <div style="height: min(35vw, 282px);">
+        <img src="./static/AEREUM-07.png" height="100%"></img>
+      </div>
+      <p class="text-large" style="color: black; width: 75%; margin-bottom: min(8vw,100px);"> 
+        FreeHandle hopes to bring back <span style="font-weight: bold"> human values </span> and 
+        independence to digital interfaces, setting people free to pour innovation, personality 
+        and experimentation into their interactions
+      </p>
+    </div>
+  </div>
+  
+  <div id="unplugged_scroll" class="scroll-container" style="overflow-x: hidden;">
+    <p class="scroll-text-1">ON OUR JOURNEY TO FREE HANDLES WE REALIZED A FEW THINGS... </p>
+    <p class="scroll-text-1">ON OUR JOURNEY TO FREE HANDLES WE REALIZED A FEW THINGS... </p>
+    <p class="scroll-text-1">ON OUR JOURNEY TO FREE HANDLES WE REALIZED A FEW THINGS... </p>
+    <p class="scroll-text-1">ON OUR JOURNEY TO FREE HANDLES WE REALIZED A FEW THINGS... </p>
+    <p class="scroll-text-1">ON OUR JOURNEY TO FREE HANDLES WE REALIZED A FEW THINGS... </p>
+  </div>
+
+  <!-- Unplugged section 1 -->
+  <div id="unplugged" style="width: 100%;">
+    <div id="unpuggled_1" style="width:100%; background-image: linear-gradient(#16935B, #E5DC1D); display: flex; align-items: center; flex-direction: column;">
+      <div style="display: flex; align-items: center; flex-direction: column; width: min(100vw,1200px); margin-bottom: min(3vw,50px); margin-top: min(2vw,30px);">
+        <h1 style="margin-top: min(3vw,50px);"></h1>
+        <div id="first" style="position: relative; height: min(calc(0.7 * 0.54 * 100vw),calc(0.7 * 0.54 * 1200px)); width: 70%; ">          
+          <div style="position:absolute; left: 0; top: 0; width: 90%;">
+            <svg width="100%" viewBox="0 0 1100 529" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M72.9833 529L0 101.215L422.148 0H1050.64L1100 355.649L683 399.5L608.544 472.521L72.9833 529Z" fill="#FC7CEC"/>
+            </svg>
+          </div>
+          <div style="position: absolute; left: 49%; top: 54%; width: 46%;">
+            <svg width="100%" viewBox="0 0 551 305" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M551 40.2622L0 0V305L505.939 261.98L551 40.2622Z" fill="black"/>
+            </svg>
+          </div>
+          <div style="position:absolute; left:5.7%; top:10.5%;">
+            <p class="number-unplugged">1</p>
+          </div>
+          <div style="position: absolute; left:18.1%; top:15.4%; width: 70%">
+            <p class="title-unplugged"> 
+              first... we realized interfaces are not neutral!
+            </p>
+          </div>
+          <div style="position: absolute; left:50%; top:62%; width: min(31vw,300px)">
+            <p class="text-medium-unplugged" style="color:#E3E3E3"> 
+              Behaviour <span style="font-weight: bold"> drastically changes</span> 
+              according to the interface used to interact. :O
+            </p>
+          </div>
+        </div>
+        <div style="width: 100%; margin-top: 50px;">
+        </div>
+        <div id="spotify" style="position: relative; height: min(calc(0.8 * 0.54 * 100vw),calc(0.8 * 0.54 * 1200px)); width: 80%;">
+          <div style="position:absolute; left:0; top:0; width: 100%; height: 100%;">
+            <img width="100%" src="../static/AEREUM-04.png"/>
+          </div>
+          <div style="background-color:#E5DC1D; position: absolute; left:0.4%; top:2.7%; width: 53%; height:9.6%; transform: rotate(-1.47deg);">
+          </div>
+          <div style="background-color:#E5DC1D; position: absolute; left:-2%; top:32.2%; width: 24.8%; height:46.0%; transform: rotate(-1.47deg);">
+          </div>
+          <div style="background-color:#E5DC1D; position: absolute; left:79.2%; top:37.5%; width: 20.3%; height:32.8%; transform: rotate(5.61deg);">
+          </div>
+          <div style="position: absolute; left: 2.7%; top:1.9%; width: 48.8%; transform: rotate(-1.47deg);">
+            <p class="sticker-unplugged">
+              Take music, for example!
+            </p>
+          </div>
+          <div style="position: absolute; left: -1%; top:35%; width: min(10vw,200px)">
+            <p class="text-medium-unplugged">
+              Today's digital interfaces feel <span style="font-weight: bold">
+                predictable, uniform </span>
+            </p>
+          </div>
+          <div style="position: absolute; left: 80.5%; top:40%; width: min(15vw,200px);">
+            <p class="text-medium-unplugged"><span style="font-weight: bold">no human </span> exchange or surprises...</p>
+          </div>
+        </div>
+        <div style="width: 100%; margin-top: 50px;">
+        </div>
+        <div id="store" style="position: relative; height: min(calc(0.8 * 0.81 * 100vw),calc(0.8 * 0.81 * 1200px)); width: 80%; margin-top: min(4vw,40px); left: -5%;">
+          <div style="position: absolute; left:0; top:0; width: 79.1%; height:100%;">
+            <svg width="100%" viewBox="0 0 1200 1231" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M82 1230L1 1H697.42L1199 876.5L783.5 948L82 1230Z" fill="#FC7CEC" stroke="#FC7CEC"/>
+            </svg>
+          </div>
+          <div style="position: absolute; left: 3.5%; top:2%; width: 48%;">
+            <p class="text-large">
+              Think of a 
+              <span style="background-color: #E5DC1D; font-family:Barriecito; transform: rotate(-6.51deg); -webkit-transform: rotate(-6.51deg);display: inline-block;"> 
+                different 
+              </span> 
+              <span style="font-weight: bold;"> 
+                interface,
+              </span> like a record store... The experience gets 
+              <span style="font-weight: bold;"> 
+                fun, colourful! 
+              </span>
+            </p>                   
+          </div>
+          <div style="position: absolute; left: 5.5%; top:41%; width:min(40vw,350px)">
+            <p class="text-medium-unplugged">
+              Interfaces must embrace human <span style="font-weight: bold">curiosity and experimentation!</span>
+            </p>
+            <p class="text-medium-unplugged" style="margin-top: min(3vw,30px);">
+              There’s no good reason for digital music discovery to be less surprising than in real life. And so with movies, literature,
+            </p>
+            <p class="text-medium-unplugged">
+              everything!...
+            </p>
+          </div>
+          <!-- Lari -->
+          <div style="position:absolute; left: min(40vw,380px); top:0%; width: min(58vw,750px); height: 68.2%;">
+            <img width="100%" src="../static/AEREUM05.gif"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unplugged section 2 -->
+  <div class="scroll-container" style="overflow-x: hidden;"> 
+    <p class="scroll-text-2">WHY DO OUR CHOICES REMAIN BOUND TO TODAY'S UNIMAGINATIVE DIGITAL INTERFACES? </p>
+    <p class="scroll-text-2">WHY DO OUR CHOICES REMAIN BOUND TO TODAY'S UNIMAGINATIVE DIGITAL INTERFACES? </p>
+    <p class="scroll-text-2">WHY DO OUR CHOICES REMAIN BOUND TO TODAY'S UNIMAGINATIVE DIGITAL INTERFACES? </p>
+    <p class="scroll-text-2">WHY DO OUR CHOICES REMAIN BOUND TO TODAY'S UNIMAGINATIVE DIGITAL INTERFACES? </p>
+    <p class="scroll-text-2">WHY DO OUR CHOICES REMAIN BOUND TO TODAY'S UNIMAGINATIVE DIGITAL INTERFACES? </p>
+  </div>
+  <div style="width: 100%; height: min(312.4vw,3750px); position: relative;">
+    <div style="position: absolute; width: 100%; top: 0; left:0;">
+      <div style="background-color:#E5DC1D;width: 100%">
+        <div style="height: calc(min(350px,29.2vw) - 10vw);width: 100%">
+        </div> 
+        <div style="height: calc(20vw); width: 100%; background-color: #16935B; clip-path: polygon(0 100%, 100% 100%, 100% 0%, 0 100%);">
+        </div>
+      </div>
+      <div style="height: calc(min(1400px,116.6vw) - 20vw); width: 100%;background-color: #16935B;">
+      </div>      
+      <div style="height: min(1000px,83.3vw); width: 100%; background-color: #FC7CEC;">
+        <div style="height: calc(20vw); width: 100%; background-color: #16935B; clip-path: polygon(0 0,100% 100%, 100% 0,0 0%);">
+        </div>
+      </div>
+      <div style="background-color: black; width: 100%">
+        <div style="height: calc(20vw); width: 100%; background-color: #FC7CEC; clip-path: polygon(0 100%,100% 0, 0 0,0 100%);">
+        </div>
+      </div>
+      <div style="height: calc(min(400px,33.3vw) - 10vw); width: 100%; background-color: black;">
+      </div>
+      <div style="background-color: black;width: 100%;">
+        <div style="margin-top: -10vw; height: 10vw; width: 100%;  background-color: #16935B; clip-path: polygon(50% 100%,100% 100%, 100% 0%,50% 100%);">
+        </div>
+      </div>
+      <div style="height: min(600px,50vw); background-color:#16935B;width: 100%;">
+      </div>
+    </div>
+    <div style="position: absolute; left: 0; top: 0; width: 100%; display: flex; flex-direction: column; align-items: center;">
+      <div style="width: min(100vw,1200px); display: flex; align-items: center; flex-direction: column;">
+        <div class="text-large" style="width: 60%; margin-top: min(50px,4.12vw);">
+          We demand more. We demand <span style="font-weight:bold ;">freedom</span> for our digital interactions! Which brings us to the following insight...
+        </div>
+        <div id="diagonal" style="position: relative; width: 100%; height: min(calc(0.5 * 100vw),calc(0.5 * 1200px)); background-color: transparent;">
+          <div style="position: absolute; width:70%; left:15%; top: 15%;">
+            <div id="second" style="position: relative; height: min(calc(0.7 * 0.674 * 100vw),calc(0.7 * 0.674 * 1200px)); width: 100%;">
+              <div style="position:absolute; left: 0.4%; top: 0; width: 96%;">
+                <svg width="100%"viewBox="0 0 1105 709" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M35.1509 709L0 0L458.433 25.9205L1047.58 0L1105 377.212L888.388 568.206L541.529 500.676L35.1509 709Z" fill="#FC7CEC"/>
+                </svg>                                
+              </div>
+              <div style="position: absolute; left: -1%; top: 58.6%; width: 58.5%;">
+                <svg width="100%" viewBox="0 0 673 306" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M57.1472 306L0 44.2197L607.341 0L673 247.04L57.1472 306Z" fill="black"/>
+                </svg>  
+              </div>
+              <div style="position:absolute; left:13.2%; top:3.8%;">
+                <p class="number-unplugged">
+                  2
+                </p>
+              </div>
+              <div style="position: absolute; left:24.1%; top:11%; width: 60.8%">
+                <p class="title-unplugged"> 
+                  second: we realized content is ours to choose it’s form!
+                </p>
+              </div>
+              <div style="position: absolute; left:5.6%; top:65%; width: 47%">
+                <p class="text-medium-unplugged" style="color:#E3E3E3">
+                  Our content <span style="font-weight: bold;"> should not adjust</span> to a plataform, but take whichever forms we choose!
+                </p>
+              </div>                        
+            </div>
+          </div>
+        </div>
+        <div style="width: 100%;"> 
+          <div id="mona" style="position: relative; height: min(calc(0.649 * 100vw),calc(0.649 * 1200px)); width: 100%; margin-top: min(100px,8.3vw);">
+            <div style="position:absolute; left: 26.1%; top: 0; width: 47.2%;">
+              <img width="100%" src="../static/AEREUM-monalisa.png"/>
+            </div>
+            <div style="background-color: #E5DC1D; position: absolute; left: 1%; top: 41.3%; width: 34%; height: 24.7%; transform: rotate(-3.59deg);">
+            </div>
+            <div style="background-color: #E5DC1D; position: absolute; left: 65%; top:38.1%; width: 34.2%; height: 22.3%; transform: rotate(4.14deg);">
+            </div>
+            <div style="position: absolute; left:3%; top:47%; width: min(30vw,300px);">
+              <p class="text-medium-unplugged">
+                Today, the content we share online <span style="font-weight:bold;"> has to fit </span> app’s rules
+              </p>
+            </div>
+            <div style="position: absolute; left:67.6%; top:42.8%; width: min(30vw,300px);">
+              <p class="text-medium-unplugged">So it gets <span style="font-weight:bold;">confined</span> to that space, <span style="font-weight:bold;">reduced, limited</span>...</p>
+            </div>
+          </div>
+        </div>
+        <div id="diagonal" style="position: relative; width: 100%; height: min(calc(1.2 * 100vw),calc(1.2 * 1200px)); background-color: transparent;">
+          <div style="position:absolute; left: 15%; top: 10%; width: 70%; height: min(calc(0.7 * 0.992 * 100vw),calc(0.7 * 0.992 * 1200px));">
+            <div style="position:relative; width: 100%; height:100%";>
+              <div style="position:absolute; left: 45.3%; top: 0; width: 63.7%;">
+                <img width="100%" src="../static/AEREUM0monalisa.gif"/>
+              </div>
+              <div style="position: absolute; left:-10%; top:-10%; width: min(40vw, 400px);">
+                <p class="text-large">
+                  We want no plataform dictating rules that limit our ideas...
+                </p>
+                <p class="text-medium-unplugged" style="margin-top: min(3vw,35px); margin-left: min(2vw,20px); width: 85%;">
+                  FreeHandle proposes no app, but a living project that includes a realm of independent initiatives, collectively managed!
+                </p>
+                <p class="text-medium-unplugged" style="margin-top: min(3vw,35px); margin-left: min(2vw,20px); width: 85%;">
+                  An agreement of the community on how to exchange digital info, so content is free to take <span style="font-weight: bold">ALL forms</span>, possibilities freely experimented with!
+                </p>
+                <p class="text-large" style="margin-top: min(3vw,35px);">
+                  <span style="font-weight: bold">... as the WEB is meant to be!</span>
+                </p>
+              </div>  
+            </div>
+          </div>
+          <div style="position: absolute; left:25%; top:min(87vw,1080px); width: min(62vw,720px)">
+            <p class="text-large" style="color: #E3E3E3; margin-bottom: min(10vw,120px);">
+              <span style="font-weight: bold;">FreeHandle</span> liberates us from intermediary plataforms. We post and consume directly, 
+              choosing formats freely! No frames, no forms.
+            </p>
+          </div>  
+        </div>
+        <div style="width: 100%; background-color:transparent; display: flex; justify-content: center;">
+          <div id="eyes" style="position: relative; height: min(calc(0.8 * 0.509 * 100vw),calc(0.8 * 0.509 * 1200px)); width: 80%;">
+            <div style="position:absolute; left: 0; top: 0; width: 59.5%;">
+              <img width="100%" src="../static/AEREUM-share-content.gif"/>
+            </div>
+            <div style="position: absolute; left:62.5%; top:3%; width: 50%;">
+              <p class="text-large">
+                <span style="font-weight: bold;">Content is ours!</span> 
+              </p>
+              <p class="text-large">
+                We must be free to choose how to share it!
+              </p>
+              <p class="text-large" style="margin-top: min(1vw,10px);">
+                We should be free to choose how to experiment it!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Unplugged section 3 -->
+  <div class="scroll-container" style="overflow-x: hidden;">
+    <p class="scroll-text-3">AND ON THAT NOTE, OUR LAST STOP ON FREEHANDLE'S JOURNEY OF FINDINGS...</p>
+    <p class="scroll-text-3">AND ON THAT NOTE, OUR LAST STOP ON FREEHANDLE'S JOURNEY OF FINDINGS...</p>
+    <p class="scroll-text-3">AND ON THAT NOTE, OUR LAST STOP ON FREEHANDLE'S JOURNEY OF FINDINGS...</p>
+    <p class="scroll-text-3">AND ON THAT NOTE, OUR LAST STOP ON FREEHANDLE'S JOURNEY OF FINDINGS...</p>
+    <p class="scroll-text-3">AND ON THAT NOTE, OUR LAST STOP ON FREEHANDLE'S JOURNEY OF FINDINGS...</p>
+  </div>
+  <div style="width: 100%;">
+    <div style="width:100%; background-image: linear-gradient(180deg, #E5DC1D 60%, #FC7CEC); display: flex; justify-content: center;">
+      <div style="width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; margin-top: min(150px,12.5vw);">
+        <div style="display: flex; align-items: center; flex-direction: column; width: 100%; max-width: 1200px;">
+          <div id="third" style="position: relative; height: min(calc(0.7 * 0.548 * 100vw),calc(0.7 * 0.548 * 1200px)); width: 70%;">
+            <div style="position:absolute; left: 0; top: 0; width: 98%;">
+              <svg width="100%" viewBox="0 0 1123 473" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 321.5L34.5 15.5L1122.5 0V360L687 473L0.5 321.5Z" fill="#FC7CEC"/>
+              </svg>
+            </div>
+            <div style="position:absolute; left: 13.3%; top: 60.4%; width: 59%;">
+              <svg width="100%" viewBox="0 0 679 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 155.958V0L651.583 21.6122L679 189.252L79.3333 250L0 155.958Z" fill="black"/>
+              </svg>
+            </div>
+            <div style="position:absolute; left:8.2%; top:0%;">
+              <p class="number-unplugged">
+                3
+              </p>
+            </div>
+            <div style="position: absolute; left:24.3%; top:8.7%; width: 62%">
+              <p class="title-unplugged"> 
+                third! we need a common basis for digital interaction 
+              </p>
+            </div>
+            <div style="position: absolute; left:18.8%; top:66.4%; width: min(33vw,350px)">
+              <p class="text-medium-unplugged" style="color:#E3E3E3"> <span style="font-weight: bold"> 
+                People are diverse </span>and so are the interactions they engage in! 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; flex-direction: column; width: 100%; margin-top: 50px;">
+          <div id="mergulhadores" style="position: relative; height: min(calc(0.9 * 0.831 * 100vw),calc(0.9 * 0.831 * 1200px)); width: 90%;">
+            <div style="position:absolute; left: 10.5%; top: 2.8%; width: 35.4%;">
+              <svg width="100%" viewBox="0 0 532 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.246094" y="33.3408" width="514.109" height="276.544" transform="rotate(-3.71833 0.246094 33.3408)" fill="#FC7CEC"/>
+              </svg>                            
+            </div>
+            <div style="position: absolute; left:14.7%; top: min(5vw,200px); width: min(27vw,300px)">
+              <p class="text-medium-unplugged" style="color:black"> 
+                Today we struggle to <span style="font-weight: bold">find the right </span> app for what we’d like to share 
+              </p>
+            </div>
+            <div style="position:absolute; left: 46.8%; top: 73.9%; width: 36.9%;">
+              <svg width="100%" viewBox="0 0 551 316" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="16.5947" y="0.34375" width="534.863" height="285.931" transform="rotate(3.14707 16.5947 0.34375)" fill="#FC7CEC"/>
+              </svg>
+            </div>
+            <div style="position: absolute; left:50.4%; top: min(57vw,700px); width: min(28vw,300px);">
+              <p class="text-medium-unplugged" style="color:black"> 
+                We even create versions of the content to adapt to each app audience... 
+              </p>
+            </div>
+            <div style="position:absolute; left:0; top:20%; width: 100%; height: 66.3%;">
+              <img width="100%" src="../static/AEREUM-portas.gif"/>
+          </div>
+          </div>          
+        </div>
+      </div>
+    </div> 
+  </div>  
+  <div class="scroll-container" style="overflow-x: hidden;">
+    <p class="scroll-text-4">WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL!</p>
+    <p class="scroll-text-4">WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL!</p>
+    <p class="scroll-text-4">WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL!</p>
+    <p class="scroll-text-4">WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL!</p>
+    <p class="scroll-text-4">WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL! WE DESERVE TO HAVE IT ALL!</p>
+  </div>
+  <div style="width: 100%; background-color: #FC7CEC; display: flex; justify-content: center;">
+    <div style="display: flex; align-items: center; flex-direction: column;  margin-bottom: 50px; width: 90%; max-width: 1000px;">
+      <div id="pessoa_multipla" style="position: relative; height: min(calc(0.9 * 0.774 * 100vw),calc(0.9 * 0.774 * 1200px)); width: 90%; margin-bottom: 30px;">
+        <div style="position:absolute; left:0%; top:12%; width: 49.3%; height: 66.3%;">
+          <img width="100%" src="../static/AEREUM-010.png"/>
+        </div>
+        <div style="position: absolute; left: -4%; top:28%;">
+          <p class="sticker" style="background-color: black; transform: rotate(-21.74deg); color:white">teach</p>
+        </div>
+        <div style="position: absolute; left: 21.9%; top:24.6%">
+          <p class="sticker" style="background-color: black;  transform: rotate(-21.74deg); color:white">share</p>
+        </div>
+        <div style="position: absolute; left: 31.9%; top:34.4%">
+          <p class="sticker" style="background-color: black; transform: rotate(-14.74deg); color:white">we talk</p>
+        </div>
+        <div style="position: absolute; left: 0.2%; top:54.6%">
+          <p class="sticker" style="background-color: black; transform: rotate(11.51deg); color:white">speak</p>
+        </div>
+        <div style="position:absolute; left:3.5%; top:69.4%;">
+          <p class="sticker" style="background-color: black; transform: rotate(-21.64deg); color:white">we exchange</p>
+        </div>
+        <div style="position: absolute; left:55%; top:15%; width: 48%;">
+          <p class="text-large" style="color: black; margin-bottom: min(3vw,30px);">
+            Forget that! 
+          </p>
+          <p class="text-medium-unplugged" style="color: black; margin-bottom: min(3vw,30px); margin-left: min(2vw,20px);">
+            FreeHandle aspires to MORE than the establishment of any single app...
+          </p>
+          <p class="text-large" style="color: black; margin-bottom: min(3vw,30px);">
+            It provides fertile ground for <span style="font-weight: bold;">new applications</span> to be sown, grow and flourish!
+          </p>
+          <p class="text-large" style="color: black; margin-bottom: min(3vw,30px);">
+            FreeHandle lives to <span style="font-weight: bold;">build and expand iteself!</span>
+          </p>
+          <!-- <p class="text-medium-unplugged" style="color: black; margin-left: min(2vw,20px);">A digital venue to promote a festival of ideas on building new digital venues! Come join us at creating a new web ;)</p> -->
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center;">
+        <div class="letsdo"> 
+          <a style="text-align: center; padding: 0px; margin: 0px;" href="synergy/signin"> LET'S DO THIS!</a>
+        </div>
+      </div>
+      <div style="height: min(120px,5vw); width: 100%;">
+      </div>
+    </div>  
+  </div>
+  <div id="whaaat" style="width: 100%; background-color: #FC7CEC;">
+    <div style="width: 100%; position: relative; height: calc(min(360px,30vw) + 10vw);">
+      <div style="position:absolute; height: 100%; width: 100%; background-color: black; clip-path: polygon(0% 0%,0% 100%,100% calc(100% - 10vw), 100% 0%, 0% 0%);">
+      </div>
+      <img style="position:absolute; width: min(70vw, 840px); left: calc(50vw - min(50vw,600px)); top: min(2vw,24px);" src="./static/capa6.png">
+      <div style="position:absolute; top: min(1vw, 12px); width: min(25vw, 300px); left:calc(50vw - min(50vw,600px) + min(58vw, 696px));">
+          <p class="text-large" style="width: min(45vw,420px); word-wrap: wrap; color: #E3E3E3;">
+            A set of rules agreed upon by different participants of a network to ensure direct digital communication. 
+          </p>
+        <!-- <div style="width: min(35vw, 200px);">
+          <p class="text-large" style="word-wrap: wrap; color: #E3E3E3;">
+            That's the protocol, <span style="font-weight:bold">Aereum's protocol.</span>
+          </p>
+        </div> -->
+      </div>
+    </div>
+    <div style="width: 100%; display:flex; justify-content: center;  background-color: #FC7CEC; margin-top: min(5vw,60px);"> 
+      <div style="width: min(100vw,800px);">
+        <!-- <img style="width:100%; margin-bottom: min(1vw,5px);" src="./static/0_CRYPTOWOMAN.jpg"/> -->
+        <img style="width:100%;margin-bottom: min(1vw,5px);" src="./static/1_CRYPTOWOMAN.jpg"/>
+        <img style="width:100%;margin-bottom: min(1vw,5px);" src="./static/2_CRYPTOWOMAN.jpg"/>
+        <img style="width:100%;margin-bottom: min(1vw,5px);" src="./static/3_CRYPTOWOMAN_ajustado.jpg"/>
+        <img style="width:100%;margin-bottom: min(1vw,5px);" src="./static/4_CRYPTOWOMAN_ajustado.jpg"/>
+        <img style="width:100%;margin-bottom: min(1vw,5px);" src="./static/5_CRYPTOWOMAN.jpg"/>
+        <img style="width:100%;margin-bottom: min(1vw,5px);" src="./static/6_CRYPTOWOMAN.jpg"/>
+      </div>  
+    </div>
+    <div style="display: flex; justify-content: center;">
+      <div class="letsdo"> 
+        <a style="text-align: center; padding: 0px; margin: 0px;" href="synergy/signin"> LET'S DO THIS!</a>
+      </div>
+    </div>
+    <div id="nerds_frame" style="height: min(200px,16.6vw); width: 100%;">
+    </div>
+  </div>  
+  <div id="nerds" style="display: flex; flex-direction: column; align-items: center; width: 100%; background-color:#262626;">
+    <div id="transicao_nerds" style="position: relative; height: min(20vw,440px); width: min(100vw,1200px); margin-top:max(-10vw,-120px); margin-bottom: min(20vw,240px);">
+      <div style="position: absolute; width: 90%; left: 3%;">
+          <svg width="100%" viewBox="0 0 1365 528" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.289062" y="52.2578" width="1346.38" height="475.18" transform="rotate(-2.22438 0.289062 52.2578)" fill="#16935B"/>
+          </svg>
+      </div>
+      <div style="position: absolute; top:20%; left: 8%; width: 80%;">
+          <p class="text-large" style="color: black; margin-bottom: min(1vw,10px);">
+              <span style="font-weight: bold">Cryptography</span> technics give the foundation for decentralized interaction. 
+          </p>
+          <p class="text-large" style="color: black; margin-bottom: min(1vw,10px);">
+            An <span style="font-weight: bold">original set of protocols</span> provides the digital space for social interactions to be experimented with!
+          </p>
+      </div>
+    </div>
+    <div style="width: 100%; display: flex; justify-content: center;">
+      <div class="border-nerds borderlines" style=" margin: min(24px,2vw); padding-left: min(vw,12px); padding-right: min(vw,12px); padding-bottom: min(3vw,36px); padding-top: min(3vw,362px); width: 87ch;">
+        <p class="header-nerds" style="color:#94969C; margin-left: min(1vw,12px); margin-bottom: min(2vw,24px);">120 lines of code (130 sloc) | 1.2 Kb</p>
+        <div style="display: flex; flex-wrap: wrap; width: 100%; padding: 0 0 0 0; margin: 0 0 0 0;">
+          <span class="linebox">1</span><span class="noindent"></span>
+          <span class="linerow" style="color:#FC7CEC">''</span>
+          <span class="linebox">2</span><span class="noindent"></span>
+          <span class="linerow" style="color:#FC7CEC">FreeHandle is <span style="color:#16935B">alive</span>! It bets on being a first step into the journey of a <span style="color:#16935B">collectively constructed web</span>. It is a call out to <span style="color:#16935B">everyone</span> for participating and creating what the web can be!</span>
+          <span class="linebox">3</span><span class="emptyline"></span>
+          <span class="linebox">4</span><span class="noindent"></span>
+          <span class="linerow" style="color:#FC7CEC">Designed as a community focused proposition, it evolves through collectively made decisions and ideas. To be called truly social, a network <span style="color:#16935B">must be built by and for its users</span>!</span>
+          <span class="linebox">5</span><span class="emptyline"></span>
+          <span class="linebox">6</span><span class="noindent"></span>
+          <span class="linerow" style="color:#FC7CEC">We <span style="color:#16935B">depend upon ourselves to start</span> the construction of what we want the web to be! Boot, then build from that on... </span>
+          <span class="linebox">7</span><span class="emptyline"></span>
+          <span class="linebox">8</span><span class="noindent"></span>
+          <span class="linerow" style="color:#FC7CEC">So FreeHandle proposes a starting point, a common ground on where to begin, far from knowing where this path may lead. A basic foundation for mutual understanding, the proposed software framework is very initial, consisting only of the basic needs for collective building to take off, with the community defining how it will evolve.</span>
+          <span class="linebox">9</span><span class="emptyline"></span>
+          <span class="linebox">10</span><span class="noindent"></span>
+          <span class="linerow" style="color:#FC7CEC">In all, FreeHandle takes off encompassing a set of four independent protocols - all alive and collectively maintained - such that, together, they provide the main social network funcionalities for more specific applications to be proposed and experimented with by the community. </span>
+          <span class="linebox">11</span><span class="emptyline"></span>
+          <span class="linebox">12</span><span class="noindent"></span>
+          <span class="linerow" style="color:#FC7CEC">A brief description of this initial architecture offered, and of each of its pertaining starting protocols, follows.</span>
+          <span class="linebox">13</span><span class="noindent"></span>
+          <span class="linerow" style="color:#FC7CEC">''</span>
+          <span class="linebox">14</span><span class="emptyline"></span>
+          <span class="linebox">15</span><span class="noindent"></span>
+          <label for="accordion-1" class="linerow bold accordion" style="color:#16935B"> <span class="nonmobileplus">[+]</span> Blueprint and void actions  </label> <span class="mobileplus">+</span><input type="checkbox" class="accordion" id="accordion-1" checked/> 
+          <div style="display: flex; flex-wrap: wrap; width: 100%; padding: 0 0 0 0; margin: 0 0 0 0;">
+            <span class="linebox">16</span><span class="emptyindentline"></span>
+            <span class="linebox">17</span><span class="indent"></span>
+            <span class="indentline">The initial blueprint proposed by FreeHandle consists of a crypto network based on an original consensus mechanism (as described by breeze protocol), and of a small kit of basic social interactions protocols (namely handles, stages and synergy).</span>
+            <span class="linebox">18</span><span class="emptyindentline"></span>
+            <span class="linebox">19</span><span class="indent"></span>
+            <span class="indentline">The network receives instructions that must include essential information for it to be processed by the network, and that may also include further directions which will be ignored by the basic protocol, but will be further processed by specific protocols. </span>
+            <span class="linebox">20</span><span class="emptyindentline"></span>
+            <span class="linebox">21</span><span class="indent"></span>
+            <span class="indentline">To achieve that, the network protocol makes use of a void instruction. Aside from fee exchange, the void instruction does not change the main network status. By use of the void instruction, each specific protocol will process the directions of the instruction that pertain to it, and will ignore the remaining portion which does not. </span>
+            <span class="linebox">22</span><span class="emptyindentline"></span>
+            <span class="linebox">23</span><span class="indent"></span>
+            <span class="indentline">For example, handles' protocol instructions will be processed from breeze's protocol void instructions, implementing the proof of authorship functionality. Synergy's protocol instructions will be processed from handles' protocol void instruction, implementing the co-authorship functionality. And so it can be with all further proposed specialized protocols.</span>
+            <span class="linebox">24</span><span class="emptyindentline"></span>
+            <span class="linebox">25</span><span class="indent"></span>
+            <span class="indentline">So the network works as a foundation for specialized applications to work in following stages of the full processing of the void instruction. The especialized applications directions included in the void instruction may encompass whichever social protocols might be proposed.</span>
+            <span class="linebox">26</span><span class="emptyline"></span>
+            <span class="linebox">27</span><span class="indent"></span>
+            <span class="indentline">As of now, FreeHandle proposes three specialized social protocols (handles, stages and synergy) running on top of the network, defined by the breeze protocol. </span>
+            <span class="linebox">28</span><span class="emptyline"></span>
+          </div>
+          <span class="linebox">29</span><span class="noindent"></span>
+          <label for="accordion-2" class="linerow bold accordion" style="color:#16935B"> <span class="nonmobileplus">[+]</span> Breeze  </label> <span class="mobileplus">+</span><input type="checkbox" class="accordion" id="accordion-2" checked/> 
+          <div style="display: flex; flex-wrap: wrap; width: 100%; padding: 0 0 0 0; margin: 0 0 0 0;">
+            <span class="linebox">30</span><span class="emptyindentline"></span>
+            <span class="linebox">31</span><span class="indent"></span>
+            <span class="indentline">Breeze protocol is the groundwork of the decentralized information exchange functionality. It is a multipurpose crypto network, offering a Proof-of-Stake consensus layer for other blockchains and protocols to be implemented on top of it. </span>
+            <span class="linebox">32</span><span class="emptyindentline"></span>
+            <span class="linebox">33</span><span class="indent"></span>
+            <span class="indentline">It provides basic actions for the implementation of Proof-of-Stake rules and, in addition to those, a singular void action. This void action does not impact network's state, apart from fee exchange. Through the use of this void action it is possible to submit actions related to more specialized protocols that will be operating on top of Breeze's consensus layer. </span>
+            <span class="linebox">34</span><span class="emptyindentline"></span>
+            <span class="linebox">35</span><span class="indent"></span>
+            <span class="indentline">An additional trait of Breeze's protocol initial implementation is that it provides decoupled network functionalities as independent services. The tree uncoupled services are: block creation and consensus, block storage and indexing, and finally gateway connection for validator nodes.</span>
+            <span class="linebox">36</span><span class="emptyindentline"></span>
+            <span class="linebox">37</span><span class="indent"></span>
+            <span class="indentline">The uncoupled architecture, alog with the void action, make it easy for specialized social protocols to be implemented on top of the network as a forth service! </span>
+            <span class="linebox">38</span><span class="emptyindentline"></span>
+            <span class="linebox">39</span><span class="indent"></span>
+            <span class="indentline">To find out more about breeze protocol, check <a href="www.lienko.com">breeze collective</a>. And <a href="https://github.com/freehandle/breeze">here</a> you can check breeze's official repo.</span>
+            <span class="linebox">40</span><span class="emptyline"></span>
+          </div>
+          <span class="linebox">41</span><span class="noindent"></span>
+          <label for="accordion-3" class="linerow bold accordion" style="color:#16935B"> <span class="nonmobileplus">[+]</span> Handles  </label> <span class="mobileplus">+</span> <input type="checkbox" class="accordion" id="accordion-3" checked/> 
+          <div style="display: flex; flex-wrap: wrap; width: 100%; padding: 0 0 0 0; margin: 0 0 0 0;">
+            <span class="linebox">42</span><span class="emptyindentline"></span>
+            <span class="linebox">43</span><span class="indent"></span>
+            <span class="indentline comment">Handles protocol is a social protocol designed to run on top of the Breeze network. It provides the functionality of named entities within the network, implementing a social identity layer for the specialized protocols to identify users. </span>
+            <span class="linebox">44</span><span class="emptyindentline"></span>
+            <span class="linebox">45</span><span class="indent"></span>
+            <span class="indentline comment">Handles protocol uses the void action from breeze protocol to authenticate the author of a given instruction.</span>
+            <span class="linebox">46</span><span class="emptyindentline"></span>
+            <span class="linebox">47</span><span class="indent"></span>
+            <span class="indentline comment">Also, it provides a functionality called Power of Attorney (PoA). A PoA can be either granted or revoked by an user. Granting a PoA instructs the network to allow actions to be signed by the appointed "attorney" on behalf of the user. Revoking reverses this authorization. </span>
+            <span class="linebox">48</span><span class="emptyindentline"></span>
+            <span class="linebox">49</span><span class="indent"></span>
+            <span class="indentline comment">The PoA feature can be particularly important in keeping the handle ownership an power in the hands of the user.</span>
+            <span class="linebox">50</span><span class="emptyindentline"></span>
+            <span class="linebox">51</span><span class="indent"></span>
+            <span class="indentline comment">New social applications can be adopted and discarded upon demand by a given user, by granting and revoking the previously granted Power of Attorney, without any loss of ownership over content and namespace!</span>
+            <span class="linebox">52</span><span class="emptyindentline"></span>
+            <span class="linebox">53</span><span class="indent"></span>
+            <span class="indentline">To find out more about handles protocol, check <a href="www.lienko.com">handles collective</a>. And <a href="https://github.com/freehandle/handles">here</a> you can check handles' official repo.</span>
+            <span class="linebox">54</span><span class="emptyline"></span>
+          </div>  
+          <span class="linebox">55</span><span class="noindent"></span>
+          <label for="accordion-4" class="linerow bold accordion" style="color:#16935B"> <span class="nonmobileplus">[+]</span> Stages  </label> <span class="mobileplus">+</span> <input type="checkbox" class="accordion" id="accordion-4" checked/> 
+          <div style="display: flex; flex-wrap: wrap; width: 100%; padding: 0 0 0 0; margin: 0 0 0 0;">
+            <span class="linebox">56</span><span class="emptyindentline"></span>
+            <span class="linebox">57</span><span class="indent"></span>
+            <span class="indentline comment">Stages protocol is also a social protocol designed to run on top of the Breeze network. It provides the functionality of digital spaces, called stages, so that users can organize access to the content published on the breeze blockchain to various audiences with the simple exachange of a key.</span>
+            <span class="linebox">58</span><span class="emptyindentline"></span>
+            <span class="linebox">59</span><span class="indent"></span>
+            <span class="indentline comment">Once a stage is created, the owner can give different privileges within this stage to other users. Privileges range from viewing to posting, also managing and ultimately refreshing access keys to any given stage.</span>
+            <span class="linebox">60</span><span class="emptyindentline"></span>
+            <span class="linebox">61</span><span class="indent"></span>
+            <span class="indentline comment">Stages protocol makes it easier for content exchanged on top of the Breeze network to be accessible to the curated audience chosen by the user.</span>
+            <span class="linebox">62</span><span class="emptyindentline"></span>
+            <span class="linebox">63</span><span class="indent"></span>
+            <span class="indentline">To find out more about stages protocol, check <a href="www.lienko.com">stages collective</a>. And <a href="https://github.com/freehandle/stages">here</a> you can check stages' official repo.</span>
+            <span class="linebox">64</span><span class="emptyline"></span>
+          </div>
+          <span class="linebox">65</span><span class="noindent"></span>
+          <label for="accordion-5" class="linerow bold accordion" style="color:#16935B"> <span class="nonmobileplus">[+]</span> Synergy  </label> <span class="mobileplus">+</span> <input type="checkbox" class="accordion" id="accordion-5" checked/> 
+          <div style="display: flex; flex-wrap: wrap; width: 100%; padding: 0 0 0 0; margin: 0 0 0 0;">
+            <span class="linebox">66</span><span class="emptyindentline"></span>
+            <span class="linebox">67</span><span class="indent"></span>
+            <span class="indentline comment">Synergy protocol is where everything comes together. It is a social protocol that runs on top of the breeze network, while also being the place where the breeze protocol evolution is being discussed and decided upon. And not only breeze protocol is being discussed through synergy, but also handles protocol, stages protocol, and synergy protocol itself! And many, many others that may yet come... And are all welcome!</span>
+            <span class="linebox">68</span><span class="emptyindentline"></span>
+            <span class="linebox">69</span><span class="indent"></span>
+            <span class="indentline comment">Synergy was designed to provide a foundation for projects to be worked on collectively. It is a space for the community to build new projects and proposed ideas that may be experimented within FreeHandle, on top of breeze network.</span>
+            <span class="linebox">70</span><span class="emptyindentline"></span>
+            <span class="linebox">71</span><span class="indent"></span>
+            <span class="indentline comment">Main functionalities provided by synergy rely upon two concepts: collectives and drafts.</span>
+            <span class="linebox">72</span><span class="emptyindentline"></span>
+            <span class="linebox">73</span><span class="indent"></span>
+            <span class="indentline comment">A collective construct is a group of people with a commom goal that performs actions within the protocol as a unit, according to previously agreed upon consensus rules. Every action taken on behalf of any given collective triggers a voting mechanism for its participants. Actions will only be processed if consensus is achieved.</span>
+            <span class="linebox">74</span><span class="emptyindentline"></span>
+            <span class="linebox">75</span><span class="indent"></span>
+            <span class="indentline comment">A draft is a basic element for publishing contributions that are in progress. The are to be used by Synergy members for public idea elaboration and collaboration. Drafts can be authored by either a single member, a group of members, or a collective.</span>
+            <span class="linebox">76</span><span class="emptyindentline"></span>
+            <span class="linebox">77</span><span class="indent"></span>
+            <span class="indentline comment">Collectives can sign any action within the Synergy protocol and only a collective can create an event, which is a means for collective members to interact simultaneously for a period of time.</span>
+            <span class="linebox">78</span><span class="emptyindentline"></span>
+            <span class="linebox">79</span><span class="indent"></span>
+            <span class="indentline comment">Drafts can receive edit proposals, can be released when considered in "final" form, and can be endorsed by collectives with a stamp. Collections of drafts can be curated in boards.</span>
+            <span class="linebox">80</span><span class="emptyindentline"></span>
+            <span class="linebox">81</span><span class="indent"></span>
+            <span class="indentline comment">Synergy is a collective within Synergy. To contribute you are welcome to join it! And so with breeze collective, handles collective, etc. Join us in creating a new web!</span>
+            <span class="linebox">82</span><span class="emptyindentline"></span>
+            <span class="linebox">83</span><span class="indent"></span>
+            <span class="indentline">To find out more about synergy protocol, check <a href="www.lienko.com">synergy collective</a>. And <a href="https://github.com/freehandle/synergy">here</a> you can check synergy's official repo.</span>
+            <span class="linebox">84</span><span class="emptyline"></span>
+          </div>
+          <span class="linebox">85</span><span class="noindent"></span>
+          <label for="accordion-6" class="linerow bold accordion" style="color:#16935B"> <span class="nonmobileplus">[+]</span> Where to go next? </label> <span class="mobileplus">+</span> <input type="checkbox" class="accordion" id="accordion-6" checked/> 
+          <div style="display: flex; flex-wrap: wrap; width: 100%; padding: 0 0 0 0; margin: 0 0 0 0;">
+            <span class="linebox">86</span><span class="emptyindentline"></span>
+            <span class="linebox">87</span><span class="indent"></span>
+            <span class="indentline comment">To sign into the synergy protocol you can start <a href="www.lienko.com">here</a>!</span>
+            <span class="linebox">88</span><span class="emptyindentline"></span>
+            <span class="linebox">89</span><span class="indent"></span>
+            <span class="indentline comment">If you would rather browse synergy network anonymously, just jump <a href="www.lienko.com">here</a> and take a look!</span>
+            <span class="linebox">90</span><span class="emptyindentline"></span>
+            <span class="linebox">91</span><span class="indent"></span>
+            <span class="indentline comment">To check any of the listed protocol's repos just go to the <a href="https://github.com/freehandle">FreeHandle's GitHub</a>! All help is most welcome.</span>
+            <span class="linebox">92</span><span class="emptyline"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="letsdonerds"> 
+      <a style="text-align: center; padding: 0px; margin: 0px;" href="synergy/signin"> let's do this!</a>
+    </div>
+  </div>
+  <div id="adventure" style="width: 100%; height: 100%; background: url('./static/BG-gradient02.gif'); background-repeat: no-repeat; background-size: 100% 100%;">
+    <div style="width: 100%; height: 100%; display: flex; justify-content: center; background-image: linear-gradient(0deg, rgba(227,227,227,1), rgba(227,227,227,0));">
+      <div style="width: min(100vw,1200px);">
+        <p class="title-adventure" style="color: black; margin-bottom: min(20vw,100px); margin-top: min(20vw,100px); margin-left: min(10vw,30px); width: 75%;">
+          Strangers from distant lands, friends of old... All brought together and united by a common goal!
+        </p>
+        <div id="bottomlinks" class="links-adventure" style="display: flex; width: 90%; margin-bottom: min(10vw,100px); margin-left: min(10vw,30px); color: black; ">
+          <a style="flex-grow: 1;" href="https://github.com/freehandle">Introduction_</a>
+          <a style="flex-grow: 1;" href="https://github.com/freehandle">Resources_</a>
+          <a style="flex-grow: 1;" href="synergy/signin">Participate_</a>
+          <p style="flex-grow: 1;">Other_</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="wordle.js"></script>
+</body>
+</html>

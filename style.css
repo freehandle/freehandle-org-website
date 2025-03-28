@@ -1,0 +1,557 @@
+@font-face {
+  font-family: "Broken";
+  src: url("../static/BROKEN15.TTF");
+}
+
+@font-face {
+  font-family: "Barriecito";
+  src: url("../static/Barriecito-Regular.ttf");
+}
+
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../static/Rubik-Regular.ttf');
+  font-weight: regular;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../static/Rubik-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../static/Raleway-ExtraBold.ttf')
+}
+
+@font-face {
+  font-family: 'Fira';
+  src: url('../static/FiraCode-Regular.ttf');
+  font-weight: regular;
+}
+
+@font-face {
+  font-family: 'Fira';
+  src: url('../static/FiraCode-Bold.ttf');
+  font-weight: bold;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.overhide {
+  overflow-y: hidden;
+}
+
+a:link { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
+
+.emphasis {
+background-color: #E5DC1D; 
+font-family:Barriecito; 
+transform: rotate(-6.51deg); 
+-webkit-transform: rotate(-4.51deg);
+display: inline-block;
+color: black;
+}
+
+.letsdo {
+  background-color: #E5DC1D;
+  font-family: "Broken";
+  font-size: min(6vw, 60px);
+  padding: 0px min(2.4vw, 24px) 0px min(2vw, 24px);
+  border: 2px solid black;
+  box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25), min(1.2vw, 30px) min(1.2vw, 30px) 0px black;
+  margin-bottom: min(3.6vw, 36px);
+  cursor: pointer;
+}
+
+.letsdo:hover {
+transform: rotate(-6.5deg);
+}
+
+.letsdonerds {
+  background-color: #262626;
+  font-family: "Fira";
+  font-size: min(4vw,48px);
+  color: #94969C;
+  padding: min(1vw,8px);
+  border: min(0.4vw,3px) solid #C4C4C4;
+  box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25), min(1vw,16px) min(1vw,12px) 0px #C4C4C4;
+  border-radius: min(1vw,10px);
+  padding-left: min(3vw,40px);
+  padding-right: min(3vw,40px);
+  margin-top: min(4vw,50px);
+  margin-bottom: min(10vw,100px);
+  cursor: pointer;
+}
+
+.letsdonerds:hover {
+transform: rotate(-4.5deg);
+}
+
+p {
+    display: block;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+}
+
+.scroll-container {
+  width: 100%;
+  font-family: Broken;
+  background-color: black;
+  font-size: min(7.2vw,70px);
+  color: #ffffff;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-top: min(1vw, 10px);
+  padding-bottom: min(1vw, 10px);
+}
+
+.scroll-text-1 {
+ overflow: visible;
+  /* animation properties */
+  -moz-transform: translateX(0%);
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
+  
+  -moz-animation: my-animation 7s linear infinite;
+  -webkit-animation: my-animation 7s linear infinite;
+  animation: my-animation 7s linear infinite;
+}
+
+.scroll-text-2 {
+  overflow: visible;
+   /* animation properties */
+   -moz-transform: translateX(0%);
+   -webkit-transform: translateX(0%);
+   transform: translateX(0%);
+   
+   -moz-animation: my-animation 9.73s linear infinite;
+   -webkit-animation: my-animation 9.73s linear infinite;
+   animation: my-animation 9.73s linear infinite;
+ }
+
+ .scroll-text-3 {
+  overflow: visible;
+   /* animation properties */
+   -moz-transform: translateX(0%);
+   -webkit-transform: translateX(0%);
+   transform: translateX(0%);
+   
+   -moz-animation: my-animation 8.19s linear infinite;
+   -webkit-animation: my-animation 8.19s linear infinite;
+   animation: my-animation 8.19s linear infinite;
+ }
+
+ .scroll-text-4 {
+  overflow: visible;
+   /* animation properties */
+   -moz-transform: translateX(0%);
+   -webkit-transform: translateX(0%);
+   transform: translateX(0%);
+   
+   -moz-animation: my-animation 9.87s linear infinite;
+   -webkit-animation: my-animation 9.87s linear infinite;
+   animation: my-animation 9.87s linear infinite;
+ }
+
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+  from { -moz-transform: translateX(0%); }
+  to { -moz-transform: translateX(-100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from { -webkit-transform: translateX(0%); }
+  to { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  to {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}  
+
+.linebox {
+  flex-basis: 4ch;  
+  text-align: right;
+  color: #777777;
+}
+
+.linerow {
+  color: #e3e3e3;
+  flex-basis: calc(100% - 8ch);
+}
+.emptyindentline {
+  flex-basis: 4.5ch;
+  margin-right: calc(100% - 9.5ch);
+  border-right: 1px solid #888888;
+}
+
+.emptyline {
+  flex-basis: calc(100% - 5ch);
+}
+
+.noindent {
+  flex-basis: 3ch;
+}
+.indent {
+  flex-basis: 4.5ch;
+  margin-right: 2.5ch;
+  border-right: 1px solid #888888;
+}
+.indentline {
+  color: #e3e3e3;
+  flex-basis: calc(100% - 12.5ch);
+}
+
+.doubleindent {
+  flex-basis: 4.5ch;
+  margin-right: 5.5ch;
+  border-right: 1px solid #888888;
+}
+
+.doubleindentline {
+  color: #e3e3e3;
+  flex-basis: calc(100% - 15.5ch);
+}
+.bold {
+  font-weight: bold;
+}
+
+.borderlines {
+  border: solid 1px #94969C; 
+  border-radius: 2ch;
+}
+
+.mobileplus {
+  display: none;
+}
+
+
+@media (max-width: 450px) {
+
+  #keyboard-show {
+    margin-bottom: 7vh;
+  }
+
+  .mobileplus {
+    display: inline-block;
+    margin-left: -2ch;
+    color: #16935B;
+  }
+
+  .nonmobileplus {
+    display: none;
+  }
+
+  .borderlines {
+    border: 0px;
+  }
+
+  .header-nerds {
+    display: none;
+  }
+
+  .linebox {
+    display: none;
+  }
+
+  .emptyindentline {
+    flex-basis: 2ch;
+    margin-right: calc(100% - 2.5ch);
+    height: 1ch;
+  }
+
+  .noindent {
+    flex-basis: 1ch;
+  }
+  .emptyline {
+    flex-basis: calc(100% - 0.5ch);
+    height: 1ch;
+  }
+  .linerow {
+    flex-basis: calc(100% - 1.5ch);
+  }
+  
+  .indent {
+    flex-basis: 2ch;
+  }
+  .indentline {
+     flex-basis: calc(100% - 5.5ch);
+  }
+  .doubleindent {
+    flex-basis: 2ch;
+ }
+
+  .doubleindentline {
+   flex-basis: calc(100% - 11.5ch);
+  }
+
+}
+
+input.accordion {
+  width: 10px;
+}
+
+label.accordion {
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+label.accordion:hover {
+  background: #4E8774;
+}
+
+[id^=accordion]:checked + div {
+  height: 0px;
+  overflow: hidden;
+  background: none;
+}
+
+input.accordion {
+  display: none;
+}
+
+/* Header */
+
+.links {
+font-family: "Broken";
+margin: min(2vw, 20px) min(2vw, 20px) min(2vw, 20px) min(2vw, 20px);
+font-size: min(6vw, 46px);
+}
+
+a.links, a.links:visited { color: black; }
+
+
+.title {
+font-family: "Broken";
+font-size: min(22vw, 200px);
+width: 100%;
+text-align: center;
+}
+
+.sticker {
+font-family:'Barriecito';
+font-size: min(3.6vw, 36px);
+padding: min(0.8vw, 5px);
+}
+
+.text-medium {
+font-family: 'Rubik';
+font-size: min(3.6vw, 36px);
+line-height: min(4.1vw, 41px) ;
+}
+
+.close-button {
+  font-family: 'Raleway';
+  justify-content: right;
+  font-size: min(4vmin, 25px);
+  color: black;
+  background-color: #e20003;
+  margin: min(1vmin, 10px);
+  padding: min(1vmin, 10px) min(3vmin, 36px);
+  cursor: pointer;
+}
+
+.text-large {
+font-family: 'Rubik';
+font-size: min(4vw, 41px);
+line-height: min(4.4vw, 47px);  
+padding: min(1.2vw, 20px);
+}
+
+/* Unplugged */
+
+.number-unplugged {
+font-family: 'Broken';
+font-size: min(18vw,200px);
+}
+
+.title-unplugged {
+font-family: 'Broken';
+font-size: min(8vw,96px);
+line-height: min(5vw,60px);
+}
+
+.sticker-unplugged {
+font-family:'Barriecito';
+font-size: min(3vw,36px);
+padding: min(0.4vw,5px);
+}
+
+.text-medium-unplugged {
+font-family: 'Rubik';
+font-size: min(2.9vw,28px);
+line-height: min(3.1vw,32px);
+}
+
+/* Nerds */
+
+.header-nerds {
+font-family: 'Fira';
+font-size: min(1.67vw,20px);
+line-height: min(2.17vw,26px);
+}
+
+.border-nerds {
+font-family: 'Fira';
+font-size: min(calc(8px + 1vw),20px);
+}
+
+/* Adventure */
+
+.title-adventure {
+font-family: 'Broken';
+font-size: min(6vw,84px);
+line-height: min(5vw,72px);
+}
+
+.links-adventure {
+font-family: 'Rubik';
+font-size: min(2vw,20px);
+}
+
+/* Wordle */
+
+#game-board {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: Raleway;
+}
+
+.letter-box {
+  font-family: Raleway;
+  border: 1px solid black;
+  border-radius: 0px;
+  margin: 2px;
+  font-size: min(7vmin, 60px);
+  font-weight: 700;
+  color: black;
+  height: min(8vmin, 68px);
+  width: min(8vmin, 68px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.letter-row {
+  font-family: 'Raleway';
+  display: flex;
+}
+
+#keyboard-cont {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#keyboard-cont div {
+  display: flex;
+}
+
+.second-row {
+  margin: 0.5rem 0;
+}
+
+.keyboard-button {
+  font-family: Raleway;
+  font-size: min(4vmin, 36px);
+  min-width: min(6.5vmin, 30px);
+  text-align: center;
+  color: black;
+  background-color: #e9e9ed;
+  padding: min(1vmin,12px) min(1vmin,12px);
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 0 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.solve {
+  font-family: Rubik;
+  font-size: min(3.2vw, 20px);
+  background-color: #E5DC1D;
+  padding: min(.5vw, 10px);
+  margin: min(.5vw, 10px);
+}
+
+#gamediv {
+  font-family: Raleway;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgb(255,255,255,0.92); /* Fallback color */
+  background-size: cover;
+  backdrop-filter: blur(5px);
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  -moz-transform: translateX(-100vh);
+  -webkit-transform: translateX(-100vh);
+  transform: translateX(-100vh);
+  
+  -moz-animation: wordle-animation 0.5s linear forwards;
+  -webkit-animation: wordle-animation 0.5s linear forwards;
+  animation: wordle-animation 0.5s linear forwards;
+}
+
+
+ /* for Firefox */
+ @-moz-keyframes wordle-animation {
+  from { -moz-transform: translateY(-100vh); }
+  to { -moz-transform: translateY(0); }
+}
+
+/* for Chrome */
+@-webkit-keyframes wordle-animation {
+  from { -webkit-transform: translateY(-100vh); }
+  to { -webkit-transform: translateY(0); }
+}
+
+@keyframes wordle-animation {
+  from {
+    -moz-transform: translateY(-100vh);
+    -webkit-transform: translateY(-100vh);
+    transform: translateY(-100vh);
+  }
+  to {
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}  
+
