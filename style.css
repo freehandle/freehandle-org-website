@@ -433,6 +433,11 @@ font-family: 'Rubik';
 font-size: min(2vw,20px);
 }
 
+.credits-adventure {
+  font-family: 'Rubik';
+  font-size: min(1.7vw,17px);
+  }
+
 /* Wordle */
 
 #game-board {
