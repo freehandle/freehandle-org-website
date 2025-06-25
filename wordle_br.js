@@ -1,7 +1,7 @@
 const VALIDWORDS = [    
     'feliz', 'louca', 'doida', 'digna', 'igual', 'linda', 'queer', 'ideal', 'amada', 'bruxa',
     'amiga', 'brava', 'bossa', 'certa', 'livre', 'brasa', 'jovem', 'velha', 'brega', 'ninja',
-    'legal', 'plebe', 'solta', 'tenaz', 'total'
+    'legal', 'plebe', 'solta', 'tenaz', 'total', 'samba', 'forte', 'justa'
 ]
 
 const WORDS = [
@@ -203,7 +203,8 @@ const WORDS = [
     'viver', 'vocal', 'vocar', 'vogar', 'volta', 'voraz', 'votar', 'vulgo', 'vulto', 'vulva', 
     'xeque', 'xonar', 'zagal', 'zanga', 'zarro', 'zebro', 'zelar', 'zipar', 'zoada', 'zonzo', 
     'zorra', 'zorro', 'zular', 'zunir', 'louca', 'doida', 'digna', 'amada', 'brava', 'velha', 
-    'ninja', 'abade', 'calma', 'preta', 'fraca', 'tonta']
+    'ninja', 'abade', 'calma', 'preta', 'fraca', 'tonta', 'bruta', 'ricas', 'viado', 'viada',
+    'feias', 'belas', 'belos', 'aquem', 'limpa', 'criam', 'ficam', 'gosta', 'digam']
 
 
 const NUMBER_OF_GUESSES = 6;
@@ -316,7 +317,7 @@ function checkGuess (id) {
 
     if (guessString.length != 5) {
         let err = document.getElementById('lenwordle')
-        err.innerText = 'Too Short'
+        err.innerText = 'muito curto!'
         err.classList.remove('hidden')
         setTimeout(()=> {
             err.classList.add('hidden');}, 1100)
@@ -325,7 +326,7 @@ function checkGuess (id) {
 
     if (!WORDS.includes(guessString)) {
         let err = document.getElementById('errwordle')
-        err.innerText = 'Unkown Word'
+        err.innerText = 'palavra desconhecida :('
         err.classList.remove('hidden')
         setTimeout(()=> {
             err.classList.add('hidden');}, 1100)
@@ -367,7 +368,7 @@ function checkGuess (id) {
 
     if (guessString === rightGuessString) {
         let err = document.getElementById('rightwordle')
-        err.innerText = 'CONGRATS!!! :D \n You guessed right'
+        err.innerText = 'AÊEE!!! :D \n Você acertou!'
         err.classList.remove('hidden')
         setTimeout(()=> {
             err.classList.add('hidden');}, 3000)
@@ -381,7 +382,7 @@ function checkGuess (id) {
 
         if (guessesRemaining === 0) {
             let err = document.getElementById('wrongwordle')
-            err.innerText = `Oops! :( \n Game over! \n The word was \n "${rightGuessString}"`
+            err.innerText = `Oops! :( Errou! \n A palavra certa era \n "${rightGuessString}"`
             err.classList.remove('hidden')
             setTimeout(()=> {
                 err.classList.add('hidden');}, 5000)
