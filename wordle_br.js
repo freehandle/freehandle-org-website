@@ -203,8 +203,10 @@ const WORDS = [
     'viver', 'vocal', 'vocar', 'vogar', 'volta', 'voraz', 'votar', 'vulgo', 'vulto', 'vulva', 
     'xeque', 'xonar', 'zagal', 'zanga', 'zarro', 'zebro', 'zelar', 'zipar', 'zoada', 'zonzo', 
     'zorra', 'zorro', 'zular', 'zunir', 'louca', 'doida', 'digna', 'amada', 'brava', 'velha', 
-    'ninja', 'abade', 'calma', 'preta', 'fraca', 'tonta', 'bruta', 'ricas', 'viado', 'viada',
-    'feias', 'belas', 'belos', 'aquem', 'limpa', 'criam', 'ficam', 'gosta', 'digam']
+    'ninja', 'abade', 'calma', 'preta', 'fraca', 'tonta', 'bruta', 'ricas', 'abriu', 'agora',
+    'feias', 'belas', 'belos', 'aquem', 'limpa', 'criam', 'ficam', 'gosta', 'digam', 'bando',
+    'corre', 'disse', 'morre', 'leiam', 'havia', 'pulam', 'sente', 'tocam'
+]
 
 
 const NUMBER_OF_GUESSES = 6;
